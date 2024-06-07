@@ -20,7 +20,7 @@ def choice():
 
 @app.route('/night')
 def night():
-    return 'night play'
+    return render_template('night.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
