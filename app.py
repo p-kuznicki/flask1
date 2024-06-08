@@ -20,7 +20,42 @@ def choice():
 
 @app.route('/night')
 def night():
-    return render_template('night.html')
+    playlist = []
+    playlist.append(url_for('static', filename='cmok.mp3'))
+    playlist.append(url_for('static', filename='1.mp3'))
+    if session['assassin']:
+        playlist.append(url_for('static', filename='2.mp3'))
+    if session['mordred']:
+        playlist.append(url_for('static', filename='3.mp3'))
+    if session['morgana']:
+        playlist.append(url_for('static', filename='4.mp3'))
+    playlist.append(url_for('static', filename='5.mp3'))
+    if session['lancelot']:
+        playlist.append(url_for('static', filename='6.mp3'))
+    playlist.append(url_for('static', filename='pause.mp3'))
+    playlist.append(url_for('static', filename='cmok.mp3'))
+    playlist.append(url_for('static', filename='7.mp3'))
+    if session['mordred']:
+        playlist.append(url_for('static', filename='8.mp3'))
+    if session['oberon']: 
+        playlist.append(url_for('static', filename='9.mp3'))
+    if session['merlin']:  
+        playlist.append(url_for('static', filename='10.mp3'))
+        playlist.append(url_for('static', filename='pause.mp3'))
+        playlist.append(url_for('static', filename='cmok.mp3'))
+        playlist.append(url_for('static', filename='11.mp3'))
+    if session['parsifal']: 
+        playlist.append(url_for('static', filename='12.mp3'))
+    if session['morgana']:
+        playlist.append(url_for('static', filename='13.mp3'))
+    if session['parsifal']: 
+        playlist.append(url_for('static', filename='14.mp3'))
+        playlist.append(url_for('static', filename='pause.mp3'))
+        playlist.append(url_for('static', filename='cmok.mp3'))
+        playlist.append(url_for('static', filename='15.mp3'))
+    playlist.append(url_for('static', filename='16.mp3'))
+    playlist.append(url_for('static', filename='cmok.mp3'))
+    return render_template('night.html', playlist = playlist)
 
 if __name__ == '__main__':
     app.run(debug=True)

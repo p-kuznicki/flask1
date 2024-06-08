@@ -1,3 +1,20 @@
-<audio controls autoplay>
-	<source src="{{ url_for('static', filename='1.mp3') }}" type="audio/mp3">
-<audio>
+<audio id='audio' controls>
+</audio>
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const playlist = {{ playlist | tojson }};
+		let currentTrack = 0;
+		const audio = document.getElementById('audio');
+
+		audio.src = playlist[currentTrack];
+		audio.play();
+
+		audio.addEventListener('ended', () => {
+			currentTrack++;
+			if (currentTrack < playlist.length) {
+				audio.src = playlist[currentTrack];
+				audio.play();
+			}
+		});
+	});
+</script>
